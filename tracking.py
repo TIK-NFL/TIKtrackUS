@@ -35,7 +35,7 @@ for line in file:
     val = val.strip('\n')
     val = val.strip('"')
     dic[key] = val
-#Neccesarry for Pysca usage delete if not needed
+#Necessary for Pysca usage delete if not needed
 dic['port'] = int(dic['port'])
 dic['myport'] = int(dic['myport'])
 
@@ -48,7 +48,7 @@ def detect():
     image = frame[800:1080, 1:1920]
     # image = cv2.resize(image[900:1080, 350:1520],(0,0),fx=2, fy=2,interpolation=cv2.INTER_CUBIC)
     orig = image.copy()
-    # Optimization possibiitys
+    # Optimization possibilities
     (rects, weights) = hog.detectMultiScale(image, winStride=(4, 4), padding=(8, 8), scale=1.05)
     for (x, y, w, h) in rects:
         cv2.rectangle(orig, (x, y), (x + w, y + h), (0, 0, 255), 2)
