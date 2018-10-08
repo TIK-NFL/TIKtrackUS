@@ -17,7 +17,6 @@
 
 import cv2
 import sys
-from pysca import pysca
 import imutils
 import numpy as np
 from imutils.object_detection import non_max_suppression
@@ -39,16 +38,6 @@ for line in file:
 dic['port'] = int(dic['port'])
 dic['myport'] = int(dic['myport'])
 
-'''
-# Set Kamera to Starting Position
-pysca.startNetwork(dic['host'], dic['port'], dic['myhost'], dic['myport'])
-pysca.reset_seq_nr(1)
-pysca.set_power_on(1, True)
-time.sleep(2)
-pysca.pan_tilt(1, pan=100, tilt=100, pan_position=0x0140, tilt_position=0xFEB8)
-time.sleep(2)
-pysca.set_zoom(1, 6750)
-'''
 
 
 # Detection using HOGdesicriptor
@@ -202,17 +191,6 @@ if __name__ == '__main__':
             tracker = cv2.TrackerKCF_create()
             ok = tracker.init(frame, bbox)
 
-
-        '''Kamera per Pysca bewegen
-        # wemm box im linken drittel ist
-        if bbox[0] < 640:
-            pysca.pan_tilt(1, pan=100, tilt=100, pan_position=400, tilt_position=8000)
-        # wemm box im rechten drittel ist
-        elif bbox[0] > 1280:
-            pysca.pan_tilt(1, pan=100, tilt=100, pan_position=0x0150, tilt_position=0xFF78)
-        # wemm box in der mitte ist
-        else:
-            pysca.pan_tilt(1, pan=100, tilt=100, pan_position=0x0060, tilt_position=0xFEB8)'''
 
         # Display tracker type on frame
         cv2.putText(frame, tracker_type + " Tracker", (100, 20), cv2.FONT_HERSHEY_SIMPLEX, 0.75, (50, 170, 50), 2)
