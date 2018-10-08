@@ -28,13 +28,14 @@ bbox = (0, 0, 0, 0)
 fail = 0
 counter = 0
 file = open("config", 'r')
-# Read config to dic
+# Read config to dictionary
 for line in file:
     key, val = line.split(',')
     print(key)
     val = val.strip('\n')
     val = val.strip('"')
     dic[key] = val
+#Neccesarry for Pysca usage delete if not needed
 dic['port'] = int(dic['port'])
 dic['myport'] = int(dic['myport'])
 
